@@ -170,7 +170,7 @@ body {
 
 .rsvp-date {
     font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
+    font-size: 0.85rem;
     color: var(--accent-gold);
     margin-top: 10px;
     letter-spacing: 1px;
