@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teodor & Crina - 05.09.2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Resetare de bază */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            /* Fundal curat, ușor cald */
+            background-color: #fcfcfc;
+            color: #333;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Container principal */
+        .container {
+            max-width: 800px;
+            width: 100%;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        /* Numele mirilor */
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: #2c2c2c;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+            line-height: 1.2;
+        }
+
+        /* Data evenimentului */
+        .date {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #C5A059; /* Auriu mat */
+            margin-bottom: 3rem;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 10px;
+        }
+
+        /* Stilul Timer-ului */
+        #countdown {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 4rem;
+        }
+
+        .time-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .time-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-weight: 400;
+            color: #444;
+            line-height: 1;
+        }
+
+        .time-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #888;
+            margin-top: 5px;
+        }
+
+        /* Mesajele de sub timer */
+        .message-main {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        .footer-note {
+            font-size: 0.85rem;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-top: 50px;
+        }
+
+        /* Animație subtilă de apariție */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Optimizare pentru Mobil */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .date {
+                font-size: 0.9rem;
+                margin-bottom: 2.5rem;
+            }
+
+            #countdown {
+                gap: 15px;
+            }
+
+            .time-number {
+                font-size: 2rem;
+            }
+
+            .time-label {
+                font-size: 0.6rem;
+            }
+
+            .message-main {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Teodor & Crina</h1>
+        
+        <div class="date">05 Septembrie 2026</div>
+
+        <div id="countdown">
+            <div class="time-box">
+                <span id="days" class="time-number">00</span>
+                <span class="time-label">Zile</span>
+            </div>
+            <div class="time-box">
+                <span id="hours" class="time-number">00</span>
+                <span class="time-label">Ore</span>
+            </div>
+            <div class="time-box">
+                <span id="minutes" class="time-number">00</span>
+                <span class="time-label">Min</span>
+            </div>
+            <div class="time-box">
+                <span id="seconds" class="time-number">00</span>
+                <span class="time-label">Sec</span>
+            </div>
+        </div>
+
+        <div class="message-main">Vă așteptăm cu drag!</div>
+        
+        <div class="footer-note">Mai multe detalii în curând</div>
+    </div>
+
+    <script>
+        // Setăm data nunții: 5 Septembrie 2026
+        const weddingDate = new Date("Sep 5, 2026 00:00:00").getTime();
+
+        const timer = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            // Calcule matematice pentru timp
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Afișăm rezultatele în elementele HTML
+            // Folosim un mic truc (ternary operator) ca să punem un '0' în față dacă numărul e mai mic de 10
+            document.getElementById("days").innerText = days < 10 ? "0" + days : days;
+            document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
+            document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
+            document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+
+            // Dacă data a trecut
+            if (distance < 0) {
+                clearInterval(timer);
+                document.getElementById("countdown").innerHTML = "<div class='message-main'>Astăzi este ziua cea mare!</div>";
+            }
+        }, 1000);
+    </script>
+
+</body>
+</html>
