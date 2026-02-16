@@ -106,7 +106,22 @@ header {
     font-family: 'Playfair Display', serif;
     text-transform: uppercase;
 }
+/* Butonul principal - Efect de sticlă sablată (Glassmorphism) */
+header .btn {
+    background-color: rgba(255, 255, 255, 0.15); /* Alb cu 15% opacitate */
+    border: 1px solid rgba(255, 255, 255, 0.4);  /* Margine albă, fină și subtilă */
+    backdrop-filter: blur(8px); /* Magia: încețoșează pozele din spatele butonului */
+    -webkit-backdrop-filter: blur(8px); /* Suport pentru iPhone/Safari */
+    color: white;
+    font-weight: 400; /* Un pic mai elegant, mai puțin "bold" */
+    letter-spacing: 2px;
+}
 
+header .btn:hover {
+    background-color: rgba(255, 255, 255, 0.3); /* Se luminează ușor când pui mouse-ul/apeși */
+    border-color: rgba(255, 255, 255, 0.8);
+    color: white;
+}
 /* --- SECTIONS --- */
 section {
     padding: 80px 20px;
