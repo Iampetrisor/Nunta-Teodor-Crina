@@ -3,74 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teodor & Crina - Povestea Începe</title>
+    <title>Nunta Teodor & Crina | 5 Septembrie 2026</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://teodorcrina.xyz/">
+    <meta property="og:title" content="Nunta Teodor & Crina | 5 Septembrie 2026">
+    <meta property="og:description" content="Vă invităm să ne fiți alături la începutul celui mai frumos capitol al vieții noastre! Află detaliile și programul aici.">
+    <meta property="og:image" content="https://teodorcrina.xyz/assets/preview-whatsapp.jpg">
+
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
 </head>
 <body>
 
-    <div class="hero-background"></div>
-    <div class="overlay"></div>
-
-    <div class="container">
-        
-        <h3 class="intro-text">Povestea Începe</h3>
-        
-        <h1 class="main-title">Teodor & Crina</h1>
-
-        <div class="event-card">
-            <div class="date-display">
-                <span class="day">05</span>
-                <span class="month">Septembrie</span>
-                <span class="year">2026</span>
-            </div>
-            <div id="countdown">
-                <div class="time-box">
-                    <span id="days" class="time-number">00</span>
-                    <span class="time-label">Zile</span>
+    <header>
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Teodor si Crina 1">
                 </div>
-                <div class="time-box">
-                    <span id="hours" class="time-number">00</span>
-                    <span class="time-label">Ore</span>
+                <div class="swiper-slide">
+                    <img src="https://images.unsplash.com/photo-1511285560929-80b456fe0bc7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Teodor si Crina 2">
                 </div>
-                <div class="time-box">
-                    <span id="minutes" class="time-number">00</span>
-                    <span class="time-label">Min</span>
+                <div class="swiper-slide">
+                    <img src="https://images.unsplash.com/photo-1591604466107-ec97de577aff?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Teodor si Crina 3">
                 </div>
-                <div class="time-box">
-                    <span id="seconds" class="time-number">00</span>
-                    <span class="time-label">Sec</span>
-                </div>
-            </div>
-            <div class="location-details">
-                <p class="venue">Dream Party Events</p>
-                <p class="city">Piatra Neamț, ora 19:00</p>
-            </div>
-        </div>
-        <div class="people-section">
-            <h3>Alături de părinți</h3>
-            <div class="names-list">
-                Ovidiu & Teodora Petrișor<br>
-                Mihai-Bebi & Maria Mihuț
             </div>
         </div>
 
-        <div class="people-section">
-            <h3>Și de nașii noștri</h3>
-            <div class="names-list">
-                Daniel Teodor & Ana Andrei
-            </div>
+        <div class="hero-content-overlay">
+            <div class="date">5 Septembrie 2026 • Piatra Neamț</div>
+            <h1 class="script-font">Teodor & Crina</h1>
+            <p style="font-size: 1.2rem; margin-top: 10px;">Începem cel mai frumos capitol al vieții noastre</p>
+            <br>
+            <a href="#detalii" class="btn">Vezi Programul</a>
         </div>
+    </header>
 
-        <div class="rsvp-section">
-            <p class="rsvp-date">Vă rugăm să ne confirmați prezența până pe data de</p>
-            <div class="rsvp-date">5 August 2026</div>
-        </div>
-        
+    <div id="countdown">
+        <div class="timer-box"><span id="days">00</span><small>Zile</small></div>
+        <div class="timer-box"><span id="hours">00</span><small>Ore</small></div>
+        <div class="timer-box"><span id="minutes">00</span><small>Min</small></div>
+        <div class="timer-box"><span id="seconds">00</span><small>Sec</small></div>
     </div>
 
+    <section class="story">
+        <h2 class="section-title">Povestea Noastră</h2>
+        <div class="divider"></div>
+        <p>
+            Totul a început cu o cafea simplă în centrul orașului Piatra Neamț, sub privirile blânde ale muntelui. 
+            Ceea ce părea o întâlnire obișnuită s-a transformat în nenumărate drumeții, râsete și visuri comune.
+            Acum, suntem pregătiți să spunem "DA" în fața lui Dumnezeu și a voastră, a celor dragi.
+        </p>
+    </section>
+
+    <section id="detalii">
+        <h2 class="section-title">Unde & Când</h2>
+        <div class="divider"></div>
+        <p style="margin-bottom: 30px; font-style: italic;">Vă așteptăm să ne fiți alături în momentele cheie:</p>
+        
+        <div class="events-container">
+            <div class="event-card">
+                <span class="icon">⛪</span>
+                <h3>Cununia Religioasă</h3>
+                <p><strong>Ora 15:00</strong></p>
+                <p>Biserica "Buna Vestire"</p>
+                <p>Piatra Neamț</p>
+                <br>
+                <a href="https://maps.app.goo.gl/S9NGF1ENxS8adDR56" target="_blank" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">Vezi Harta</a>
+            </div>
+
+            <div class="event-card">
+                <span class="icon">🥂</span>
+                <h3>Petrecerea</h3>
+                <p><strong>Ora 19:00</strong></p>
+                <p style="font-size: 1.2rem; font-weight: bold; color: var(--accent);">Dream-Party</p>
+                <p>Piatra Neamț (Zona Ștrand)</p>
+                <br>
+                <a href="https://www.google.com/maps/place/Dream-Party/@46.929224,26.3486828,19.71z/data=!4m6!3m5!1s0x473555db014d3891:0xe93f42d0785b64cc!8m2!3d46.9291263!4d26.3482892!16s%2Fg%2F11fz9j01f0?entry=ttu&g_ep=EgoyMDI2MDEyMS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">Vezi Harta</a>
+            </div>
+        </div>
+
+        <div class="rsvp-box">
+            <h3>Confirmare Prezență</h3>
+            <p>Vă rugăm să ne confirmați prezența printr-un mesaj sau apel telefonic până la data de <strong style="color: #333; font-size: 1.1rem;">5 August 2026</strong>. Vă mulțumim!</p>
+        </div>
+    </section>
+
+    <footer>
+        <h2 class="script-font" style="color: #D4AF37; font-size: 2.5rem; margin-bottom: 10px;">Teodor & Crina</h2>
+        <p>Vă mulțumim că sunteți parte din povestea noastră!</p>
+        <div class="contact-note">Pentru orice detalii suplimentare, ne puteți contacta telefonic.</div>
+        <p style="margin-top: 40px; font-size: 0.7rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">© 2026 Made with ❤️ in Piatra Neamț</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script src="script.js"></script>
 </body>
 </html>
