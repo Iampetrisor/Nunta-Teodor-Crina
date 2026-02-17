@@ -52,17 +52,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-
 // --- 3. Generare fisier Calendar (Apple / Outlook) ---
-// Aceasta functie sta in afara DOMContentLoaded pentru a putea fi apelata de buton
+// Aceasta functie sta in afara DOMContentLoaded pentru a putea fi apelata din HTML
 window.downloadICS = function() {
-    // Formatul standard iCalendar. Orele sunt in format UTC.
-    // 5 Septembrie 2026, 15:00 ora Romaniei (EEST) = 12:00 UTC
-    // Terminare estimata a doua zi la 06:00 RO = 03:00 UTC
     const eventDetails = 
 "BEGIN:VCALENDAR\n" +
 "VERSION:2.0\n" +
 "PRODID:-//Nunta Teodor si Crina//RO\n" +
+"CALSCALE:GREGORIAN\n" +
+"METHOD:PUBLISH\n" +
 "BEGIN:VEVENT\n" +
 "UID:nunta-teodor-crina-2026\n" +
 "DTSTAMP:20260217T120000Z\n" +
@@ -74,12 +72,21 @@ window.downloadICS = function() {
 "END:VEVENT\n" +
 "END:VCALENDAR";
 
-    // Cream un fisier invizibil si il descarcam fortat
     const blob = new Blob([eventDetails], { type: 'text/calendar;charset=utf-8' });
-    const link = document.createElement('a');
-    link.href = window.URL.createObjectURL(blob);
-    link.setAttribute('download', 'nunta_teodor_crina.ics');
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    
+    // Verificam daca utilizatorul este pe un dispozitiv Apple (iOS)
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+    if (isIOS) {
+        // Metoda speciala pentru iOS Safari: il forțează sa deschida fisierul nativ in app-ul de Calendar
+        window.location.assign(window.URL.createObjectURL(blob));
+    } else {
+        // Metoda standard pentru PC si restul
+        const link = document.createElement('a');
+        link.href = window.URL.createObjectURL(blob);
+        link.setAttribute('download', 'nunta_teodor_crina.ics');
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
 };

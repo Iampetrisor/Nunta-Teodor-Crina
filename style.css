@@ -248,30 +248,32 @@ footer p {
     font-size: 0.9rem;
 }
 
-/* --- NOU: DATA & CALENDAR (Sub Povestea Noastra) --- */
+/* --- NOU: DATA & CALENDAR (Sub Unde & Cand) --- */
 .event-date-box {
-    margin-top: 40px;
     padding: 30px 20px;
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     border: 1px solid #eaeaea;
+    margin: 0 auto 50px auto; /* Centrat și cu spațiu sub el */
+    max-width: 600px;
 }
 
 .calendar-buttons {
     display: flex;
     justify-content: center;
-    gap: 15px;
     flex-wrap: wrap;
+    /* Am eliminat gap pentru a ne baza 100% pe margin, pentru telefoane mai vechi */
 }
 
-/* Stil special pentru butoanele de calendar (sa nu fie masive) */
+/* Stil special pentru butoanele de calendar */
 .btn-outline {
     background-color: transparent;
     color: var(--primary);
     border: 2px solid var(--primary);
     font-size: 0.9rem;
     padding: 10px 20px;
+    margin: 10px 5px; /* Spatiu stanga-dreapta si sus-jos, dezlipeste butoanele pe mobil */
 }
 
 .btn-outline:hover {
