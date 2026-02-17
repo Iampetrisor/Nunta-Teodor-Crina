@@ -1,4 +1,4 @@
-// Așteptăm ca tot HTML-ul să fie încărcat înainte să rulăm scriptul
+// Așteptăm ca tot HTML-ul să fie încărcat înainte să rulăm scriptul principal
 document.addEventListener('DOMContentLoaded', function() {
 
     // --- 1. Configurare Carusel (Swiper) ---
@@ -51,3 +51,35 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 1000);
     }
 });
+
+
+// --- 3. Generare fisier Calendar (Apple / Outlook) ---
+// Aceasta functie sta in afara DOMContentLoaded pentru a putea fi apelata de buton
+window.downloadICS = function() {
+    // Formatul standard iCalendar. Orele sunt in format UTC.
+    // 5 Septembrie 2026, 15:00 ora Romaniei (EEST) = 12:00 UTC
+    // Terminare estimata a doua zi la 06:00 RO = 03:00 UTC
+    const eventDetails = 
+"BEGIN:VCALENDAR\n" +
+"VERSION:2.0\n" +
+"PRODID:-//Nunta Teodor si Crina//RO\n" +
+"BEGIN:VEVENT\n" +
+"UID:nunta-teodor-crina-2026\n" +
+"DTSTAMP:20260217T120000Z\n" +
+"DTSTART:20260905T120000Z\n" +
+"DTEND:20260906T030000Z\n" +
+"SUMMARY:Nunta Teodor & Crina\n" +
+"DESCRIPTION:Vă așteptăm cu drag! Detalii și program pe https://teodorcrina.xyz/\n" +
+"LOCATION:Piatra Neamt, Romania\n" +
+"END:VEVENT\n" +
+"END:VCALENDAR";
+
+    // Cream un fisier invizibil si il descarcam fortat
+    const blob = new Blob([eventDetails], { type: 'text/calendar;charset=utf-8' });
+    const link = document.createElement('a');
+    link.href = window.URL.createObjectURL(blob);
+    link.setAttribute('download', 'nunta_teodor_crina.ics');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+};

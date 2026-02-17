@@ -99,13 +99,6 @@ header {
     color: var(--accent);
 }
 
-.hero-content-overlay .date {
-    font-size: 1.5rem;
-    letter-spacing: 3px;
-    margin-bottom: 30px;
-    font-family: 'Playfair Display', serif;
-    text-transform: uppercase;
-}
 /* Butonul principal - Efect de sticlă sablată (Glassmorphism) */
 header .btn {
     background-color: rgba(255, 255, 255, 0.15); /* Alb cu 15% opacitate */
@@ -122,6 +115,7 @@ header .btn:hover {
     border-color: rgba(255, 255, 255, 0.8);
     color: white;
 }
+
 /* --- SECTIONS --- */
 section {
     padding: 80px 20px;
@@ -175,7 +169,7 @@ section {
     color: #777;
 }
 
-/* --- EVENTS --- */
+/* --- EVENTS & STORY --- */
 .story p {
     font-size: 1.1rem;
     color: #555;
@@ -252,6 +246,37 @@ footer p {
     font-style: italic;
     opacity: 0.7;
     font-size: 0.9rem;
+}
+
+/* --- NOU: DATA & CALENDAR (Sub Povestea Noastra) --- */
+.event-date-box {
+    margin-top: 40px;
+    padding: 30px 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border: 1px solid #eaeaea;
+}
+
+.calendar-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+/* Stil special pentru butoanele de calendar (sa nu fie masive) */
+.btn-outline {
+    background-color: transparent;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+    font-size: 0.9rem;
+    padding: 10px 20px;
+}
+
+.btn-outline:hover {
+    background-color: var(--primary);
+    color: white;
 }
 
 /* --- RESPONSIVE --- */
