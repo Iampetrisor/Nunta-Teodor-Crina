@@ -1,8 +1,6 @@
-// Așteptăm ca tot HTML-ul să fie încărcat înainte să rulăm scriptul principal
 document.addEventListener('DOMContentLoaded', function() {
 
     // --- 1. Configurare Carusel (Swiper) ---
-    // Verificăm dacă elementul caruselului există în pagină pentru a evita erori
     if (document.querySelector('.mySwiper')) {
         var swiper = new Swiper(".mySwiper", {
             spaceBetween: 0,
@@ -22,8 +20,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // --- 2. Configurare Countdown ---
     const weddingDate = new Date("2026-09-05T15:00:00").getTime();
-    
-    // Verificăm dacă blocul de countdown există
     const countdownElement = document.getElementById("countdown");
 
     if (countdownElement) {
@@ -36,7 +32,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            // Funcție de siguranță pentru actualizarea numerelor
             if(document.getElementById("days")) {
                 document.getElementById("days").innerHTML = days;
                 document.getElementById("hours").innerHTML = hours;
@@ -50,10 +45,23 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }, 1000);
     }
+
+    // --- 3. LOGICA SMART OS (Aratam butonul corect in functie de telefon) ---
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    const btnGoogle = document.getElementById('btn-google');
+    const btnApple = document.getElementById('btn-apple');
+
+    if (/android/i.test(userAgent)) {
+        // E pe Android -> Ascundem Apple
+        if(btnApple) btnApple.style.display = 'none';
+    } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        // E pe iPhone/iPad -> Ascundem Google
+        if(btnGoogle) btnGoogle.style.display = 'none';
+    }
+    // Daca e pe Laptop/Desktop, raman ambele vizibile.
 });
 
-// --- 3. Generare fisier Calendar (Apple / Outlook) ---
-// Aceasta functie sta in afara DOMContentLoaded pentru a putea fi apelata din HTML
+// --- 4. Generare fisier Calendar (Apple / Outlook) ---
 window.downloadICS = function() {
     const eventDetails = 
 "BEGIN:VCALENDAR\n" +
@@ -72,16 +80,15 @@ window.downloadICS = function() {
 "END:VEVENT\n" +
 "END:VCALENDAR";
 
-    const blob = new Blob([eventDetails], { type: 'text/calendar;charset=utf-8' });
-    
-    // Verificam daca utilizatorul este pe un dispozitiv Apple (iOS)
     const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
     if (isIOS) {
-        // Metoda speciala pentru iOS Safari: il forțează sa deschida fisierul nativ in app-ul de Calendar
-        window.location.assign(window.URL.createObjectURL(blob));
+        // Fixul SUPREM pentru iPhone (Safari + Chrome). Transformam textul intr-un Data URI
+        const uri = 'data:text/calendar;charset=utf-8,' + encodeURIComponent(eventDetails);
+        window.location.href = uri;
     } else {
-        // Metoda standard pentru PC si restul
+        // Fallback standard pentru PC Outlook
+        const blob = new Blob([eventDetails], { type: 'text/calendar;charset=utf-8' });
         const link = document.createElement('a');
         link.href = window.URL.createObjectURL(blob);
         link.setAttribute('download', 'nunta_teodor_crina.ics');

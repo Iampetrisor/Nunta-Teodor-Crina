@@ -51,7 +51,7 @@ header {
     height: 100vh;
     position: relative;
     overflow: hidden;
-    background-color: #333; /* Culoare de siguranță până se încarcă pozele */
+    background-color: #333;
 }
 
 .swiper {
@@ -99,19 +99,18 @@ header {
     color: var(--accent);
 }
 
-/* Butonul principal - Efect de sticlă sablată (Glassmorphism) */
 header .btn {
-    background-color: rgba(255, 255, 255, 0.15); /* Alb cu 15% opacitate */
-    border: 1px solid rgba(255, 255, 255, 0.4);  /* Margine albă, fină și subtilă */
-    backdrop-filter: blur(8px); /* Magia: încețoșează pozele din spatele butonului */
-    -webkit-backdrop-filter: blur(8px); /* Suport pentru iPhone/Safari */
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.4); 
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     color: white;
-    font-weight: 400; /* Un pic mai elegant, mai puțin "bold" */
+    font-weight: 400;
     letter-spacing: 2px;
 }
 
 header .btn:hover {
-    background-color: rgba(255, 255, 255, 0.3); /* Se luminează ușor când pui mouse-ul/apeși */
+    background-color: rgba(255, 255, 255, 0.3);
     border-color: rgba(255, 255, 255, 0.8);
     color: white;
 }
@@ -248,32 +247,33 @@ footer p {
     font-size: 0.9rem;
 }
 
-/* --- NOU: DATA & CALENDAR (Sub Unde & Cand) --- */
+/* --- DATA & CALENDAR (Box-ul si Butoanele Identice) --- */
 .event-date-box {
     padding: 30px 20px;
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     border: 1px solid #eaeaea;
-    margin: 0 auto 50px auto; /* Centrat și cu spațiu sub el */
+    margin: 0 auto 50px auto;
     max-width: 600px;
 }
 
 .calendar-buttons {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
-    /* Am eliminat gap pentru a ne baza 100% pe margin, pentru telefoane mai vechi */
+    gap: 15px; /* Spatiu curat intre butoane */
+    width: 100%;
 }
 
-/* Stil special pentru butoanele de calendar */
 .btn-outline {
     background-color: transparent;
     color: var(--primary);
     border: 2px solid var(--primary);
     font-size: 0.9rem;
-    padding: 10px 20px;
-    margin: 10px 5px; /* Spatiu stanga-dreapta si sus-jos, dezlipeste butoanele pe mobil */
+    padding: 12px 20px;
+    flex: 1; /* Fortam ambele butoane sa ocupe exact acelasi spatiu (50%-50%) */
+    max-width: 250px; /* Nu le lasam sa se lungeasca prea mult pe PC */
+    text-align: center;
 }
 
 .btn-outline:hover {
@@ -287,4 +287,14 @@ footer p {
     .timer-box { min-width: 70px; padding: 10px; }
     .timer-box span { font-size: 1.5rem; }
     section { padding: 60px 20px; }
+    
+    /* Magia pentru mobil: Se aseaza unul sub altul si au latime maxima */
+    .calendar-buttons {
+        flex-direction: column; 
+        align-items: center;
+    }
+    .btn-outline {
+        width: 100%; 
+        max-width: 100%; 
+    }
 }
