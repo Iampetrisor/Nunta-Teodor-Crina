@@ -102,17 +102,16 @@ window.downloadICS = function() {
 // --- 5. LOGICA SĂGEATĂ SCROLL INTELIGENTĂ ---
 window.scrollToNextSection = function() {
     const currentScroll = window.scrollY;
-    const sections = document.querySelectorAll('#countdown, .story, #detalii, footer');
+    
+    // MAGIA AICI: Am adăugat .event-card și .rsvp-box ca stații intermediare!
+    const sections = document.querySelectorAll('#countdown, .story, #detalii, .event-card, .rsvp-box, footer');
     
     for (let section of sections) {
-        // Aflăm unde este secțiunea față de top-ul absolut al paginii
         const sectionTop = section.getBoundingClientRect().top + window.scrollY;
         
-        // Magia reparată: Căutăm o secțiune care e la CEL PUȚIN 50px mai jos de noi.
-        // Asta împiedică scriptul să se agațe de secțiunea la care suntem deja.
         if (sectionTop > currentScroll + 50) {
             window.scrollTo({
-                top: sectionTop - 20, // Oprim aerisit, cu 20px mai sus
+                top: sectionTop - 20, 
                 behavior: 'smooth'
             });
             break; 
@@ -128,7 +127,6 @@ window.addEventListener('scroll', function() {
     const scrollPosition = window.innerHeight + window.scrollY;
     const bodyHeight = document.body.offsetHeight;
 
-    // Când ajungem la sub 150px de capătul de jos, săgeata dispare
     if (scrollPosition >= bodyHeight - 150) {
         scrollArrow.classList.add('hidden');
     } else {
