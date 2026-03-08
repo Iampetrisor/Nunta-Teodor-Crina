@@ -105,11 +105,14 @@ window.scrollToNextSection = function() {
     const sections = document.querySelectorAll('#countdown, .story, #detalii, footer');
     
     for (let section of sections) {
+        // Aflăm unde este secțiunea față de top-ul absolut al paginii
         const sectionTop = section.getBoundingClientRect().top + window.scrollY;
         
-        if (sectionTop > currentScroll + 5) {
+        // Magia reparată: Căutăm o secțiune care e la CEL PUȚIN 50px mai jos de noi.
+        // Asta împiedică scriptul să se agațe de secțiunea la care suntem deja.
+        if (sectionTop > currentScroll + 50) {
             window.scrollTo({
-                top: sectionTop - 20, 
+                top: sectionTop - 20, // Oprim aerisit, cu 20px mai sus
                 behavior: 'smooth'
             });
             break; 
@@ -125,6 +128,7 @@ window.addEventListener('scroll', function() {
     const scrollPosition = window.innerHeight + window.scrollY;
     const bodyHeight = document.body.offsetHeight;
 
+    // Când ajungem la sub 150px de capătul de jos, săgeata dispare
     if (scrollPosition >= bodyHeight - 150) {
         scrollArrow.classList.add('hidden');
     } else {
