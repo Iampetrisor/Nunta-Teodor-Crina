@@ -83,13 +83,14 @@ header {
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between; /* Magia: Împinge textul sus și butonul jos */
     align-items: center;
     text-align: center;
     color: white;
-    padding: 20px;
+    /* padding: Sus, Dreapta, Jos, Stânga */
+    padding: 15vh 20px 10vh 20px; /* vh = viewport height. Lasă o marjă elegantă față de marginile ecranului */
     z-index: 10;
-    background: rgba(0,0,0,0.3);
+    background: rgba(0,0,0,0.3); /* Păstrăm ușoara umbrire pentru a face textul lizibil */
 }
 
 .hero-content-overlay h1 {
@@ -284,7 +285,32 @@ footer p {
     background-color: var(--primary);
     color: white;
 }
+/* --- BUTOANE LOCATIE (Harta + Uber) --- */
+.location-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+}
 
+.btn-map, .btn-uber {
+    flex: 1; 
+    min-width: 140px;
+    max-width: 200px;
+    font-size: 0.85rem;
+    padding: 10px 15px;
+}
+
+.btn-uber {
+    background-color: #000000;
+    color: #ffffff;
+    border: 2px solid #000000;
+}
+
+.btn-uber:hover {
+    background-color: transparent;
+    color: #000000;
+}
 /* --- RESPONSIVE (Mobil) --- */
 @media (max-width: 768px) {
     .hero-content-overlay h1 { font-size: 3.5rem; }
@@ -302,5 +328,14 @@ footer p {
         width: 100%; 
         max-width: 100%; /* Ocupă tot spațiul disponibil în casetă */
         margin: 0; 
+    }
+    .location-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    .btn-map, .btn-uber {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
     }
 }
