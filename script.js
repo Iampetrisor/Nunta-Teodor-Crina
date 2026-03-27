@@ -104,7 +104,7 @@ window.scrollToNextSection = function() {
     const currentScroll = window.scrollY;
     
     // MAGIA AICI: Am adăugat .event-card și .rsvp-box ca stații intermediare!
-    const sections = document.querySelectorAll('#countdown, .story, #detalii, .event-card, .rsvp-box, footer');
+    const sections = document.querySelectorAll('#countdown, #detalii, .event-card, .rsvp-box, footer');
     
     for (let section of sections) {
         const sectionTop = section.getBoundingClientRect().top + window.scrollY;
